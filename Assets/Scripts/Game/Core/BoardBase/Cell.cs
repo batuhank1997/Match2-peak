@@ -74,7 +74,7 @@ namespace Game.Core.BoardBase
 			if (down != null) FirstCellBelow = down;
 		}
 
-		public void UpdateBombItemNeighbours(Board board)
+		public void AddBombItemNeighbours(Board board)
 		{
 			var upLeft = board.GetNeighbourWithDirection(this, Direction.UpLeft);
 			var upRight = board.GetNeighbourWithDirection(this, Direction.UpRight);
@@ -85,6 +85,19 @@ namespace Game.Core.BoardBase
 			if(upRight!=null) Neighbours.Add(upRight);
 			if(downLeft!=null) Neighbours.Add(downLeft);
 			if(downRight!=null) Neighbours.Add(downRight);
+		}
+		
+		public void RemoveBombItemNeighbours(Board board)
+		{
+			var upLeft = board.GetNeighbourWithDirection(this, Direction.UpLeft);
+			var upRight = board.GetNeighbourWithDirection(this, Direction.UpRight);
+			var downLeft = board.GetNeighbourWithDirection(this, Direction.DownLeft);
+			var downRight = board.GetNeighbourWithDirection(this, Direction.DownRight);
+			
+			if(upLeft!=null) Neighbours.Remove(upLeft);
+			if(upRight!=null) Neighbours.Remove(upRight);
+			if(downLeft!=null) Neighbours.Remove(downLeft);
+			if(downRight!=null) Neighbours.Remove(downRight);
 		}
 
 		private void UpdateLabel()

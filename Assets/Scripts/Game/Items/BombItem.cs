@@ -46,7 +46,7 @@ public class BombItem : Item
         
         isAlreadyExploded = true;
         
-        Cell.UpdateBombItemNeighbours(Cell.Board);
+        Cell.AddBombItemNeighbours(Cell.Board);
         
         Cell.Neighbours.ForEach(neigbor =>
         {
@@ -55,7 +55,7 @@ public class BombItem : Item
 
         });
 
+        Cell.RemoveBombItemNeighbours(Cell.Board);
         base.TryExecute();
-        // Cell.Neighbours.Clear();
     }
 }
